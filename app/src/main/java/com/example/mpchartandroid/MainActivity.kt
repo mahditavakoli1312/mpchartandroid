@@ -42,9 +42,6 @@ class MainActivity : AppCompatActivity() {
         // on below line we are initializing
         // our variable with their ids.
         barChart = findViewById(R.id.bc_data_mainActivity)
-        barChart.renderer =
-            CustomBarRenderer(barChart, barChart.animator, barChart.viewPortHandler, 10f)
-
         // on below line we are calling get bar
         // chart data to add data to our array list
         getBarChartData()
@@ -102,6 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+/*
 class CustomBarRenderer constructor(
     chart: BarChart,
     animator: ChartAnimator,
@@ -126,4 +124,4 @@ class CustomBarRenderer constructor(
         }
 
     }
-}
+}*/
