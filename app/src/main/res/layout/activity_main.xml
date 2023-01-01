@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.mpchartandroid.mpandroidchartutils.RoundedBarChart
+    <com.example.mpchartandroid.mpandroidchartutils.HorizontalRoundedBarChart
         android:id="@+id/bc_data_mainActivity"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:radius="12dp"
+        app:radius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,17 @@
 package com.example.mpchartandroid
 
-import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.github.mikephil.charting.animation.ChartAnimator
+import com.example.mpchartandroid.mpandroidchartutils.HorizontalRoundedBarChart
 import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.renderer.BarChartRenderer
-import com.github.mikephil.charting.utils.ViewPortHandler
 
 
 class MainActivity : AppCompatActivity() {
@@ -68,13 +65,14 @@ class MainActivity : AppCompatActivity() {
 
         // disable zoom
         barChart.setScaleEnabled(false)
-
+        barChart.axisLeft.setDrawLabels(false)
 
         val xAxis = barChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.setDrawGridLines(false)
+        barDataSet.setDrawValues(false)
+//        xAxis.setDrawAxisLine(false)
         xAxis.valueFormatter = IndexAxisValueFormatter(barLabels)
-
         val value = barChart.axisLeft
         value.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
     }
@@ -98,30 +96,3 @@ class MainActivity : AppCompatActivity() {
         barLabels.add(title)
     }
 }
-
-/*
-class CustomBarRenderer constructor(
-    chart: BarChart,
-    animator: ChartAnimator,
-    vpHandler: ViewPortHandler,
-     cornerDimens: Float
-) : BarChartRenderer(chart, animator, vpHandler) {
-
-    override fun drawDataSet(c: Canvas, dataSet: IBarDataSet, index: Int) {
-
-        for (j in 0 until mBarBuffers[index].size()) {
-            if (j % 4 == 0) {
-                c.drawRoundRect(
-                    mBarBuffers[index].buffer[j],
-                    mBarBuffers[index].buffer[j + 1],
-                    mBarBuffers[index].buffer[j + 2],
-                    mBarBuffers[index].buffer[j + 3],
-                    12f,
-                    12f,
-                    mRenderPaint
-                )
-            }
-        }
-
-    }
-}*/

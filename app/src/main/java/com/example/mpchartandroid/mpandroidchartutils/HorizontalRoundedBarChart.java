@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import com.example.mpchartandroid.R;
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.buffer.BarBuffer;
-import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.highlight.Highlight;
@@ -18,44 +18,44 @@ import com.github.mikephil.charting.highlight.Range;
 import com.github.mikephil.charting.interfaces.dataprovider.BarDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.model.GradientColor;
-import com.github.mikephil.charting.renderer.BarChartRenderer;
+import com.github.mikephil.charting.renderer.HorizontalBarChartRenderer;
 import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
-public class RoundedBarChart extends BarChart {
-    public RoundedBarChart(Context context) {
+public class HorizontalRoundedBarChart extends HorizontalBarChart {
+    public HorizontalRoundedBarChart(Context context) {
         super(context);
     }
 
-    public RoundedBarChart(Context context, AttributeSet attrs) {
+    public HorizontalRoundedBarChart(Context context, AttributeSet attrs) {
         super(context, attrs);
         readRadiusAttr(context, attrs);
     }
 
-    public RoundedBarChart(Context context, AttributeSet attrs, int defStyle) {
+    public HorizontalRoundedBarChart(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         readRadiusAttr(context, attrs);
     }
 
     private void readRadiusAttr(Context context, AttributeSet attrs) {
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.RoundedBarChart, 0, 0);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.HorizontalRoundedBarChart, 0, 0);
         try {
-            setRadius(a.getDimensionPixelSize(R.styleable.RoundedBarChart_radius, 0));
+            setRadius(a.getDimensionPixelSize(R.styleable.HorizontalRoundedBarChart_radius, 0));
         } finally {
             a.recycle();
         }
     }
 
     public void setRadius(int radius) {
-        setRenderer(new RoundedBarChartRenderer(this, getAnimator(), getViewPortHandler(), radius));
+        setRenderer(new HorizontalRoundedBarChartRenderer(this, getAnimator(), getViewPortHandler(), radius));
     }
 
-    private static class RoundedBarChartRenderer extends BarChartRenderer {
+    private static class HorizontalRoundedBarChartRenderer extends HorizontalBarChartRenderer {
         private final int mRadius;
         private final RectF mBarShadowRectBuffer = new RectF();
 
-        RoundedBarChartRenderer(BarDataProvider chart, ChartAnimator animator, ViewPortHandler viewPortHandler, int mRadius) {
+        HorizontalRoundedBarChartRenderer(BarDataProvider chart, ChartAnimator animator, ViewPortHandler viewPortHandler, int mRadius) {
             super(chart, animator, viewPortHandler);
             this.mRadius = mRadius;
         }
